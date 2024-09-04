@@ -1,34 +1,68 @@
 package com.example.lv2;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
     private int operandLeft, operandRight;
     private char operator;
-    private Queue<Integer> resultQueue;
+    private final Queue<Integer> resultQueue;
 
     public Calculator() {
-
+        resultQueue = new LinkedList<Integer>();
     }
 
-    public int setLeft(int n) {
-        return 0;
+    public void setLeft(int n) {
+        operandLeft = n;
     }
-    public int setRight(int n) {
-        return 0;
+    public void setRight(int n) {
+        operandRight = n;
     }
-    public int setOperator(char ch) {
-        return 0;
+    public boolean setOperator(char ch) {
+        boolean flag;
+        if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+            operator = ch;
+            flag = true;
+        } else {
+            flag = false;
+        }
+        return flag;
     }
 
+    public boolean calculate() {
+        boolean flag = true;
+        switch (operator) {
+            case '+':
+                resultQueue.add(operandLeft+operandRight);
+                break;
+            case '-':
+                resultQueue.add(operandLeft-operandRight);
+                break;
+            case '*':
+                resultQueue.add(operandLeft*operandRight);
+                break;
+            case '/':
+                try {
+                    resultQueue.add(operandLeft/operandRight);
+                } catch (ArithmeticException e) {
+                    flag = false;
+                }
+                break;
+            default:
+                flag = false;
+                break;
+        }
+        return flag;
+    }
     public int getResult() {
-        return 0;
-    }
-    public int getResult(int at) {
-        return 0;
+        int result = 0;
+        if (!resultQueue.isEmpty()) {
+            result = resultQueue.peek();
+        }
+        return result;
     }
     public void removeResult() {
-
+        resultQueue.poll();
     }
 
 }
