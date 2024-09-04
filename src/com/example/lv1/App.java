@@ -11,16 +11,23 @@ public class App {
 
     public static void calculation_process() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("첫 번째 숫자를 입력하세요: ");
-        int a = sc.nextInt();
-        System.out.print("두 번째 숫자를 입력하세요: ");
-        int b = sc.nextInt();
-        System.out.print("사칙연산 기호를 입력하세요: ");
-        char o = sc.next().charAt(0);
-        if (calculate(a,b,o)) {
-            System.out.println("결과: " + global_result);
+        while (true) {
+            System.out.print("첫 번째 숫자를 입력하세요: ");
+            int a = sc.nextInt();
+            System.out.print("두 번째 숫자를 입력하세요: ");
+            int b = sc.nextInt();
+            System.out.print("사칙연산 기호를 입력하세요: ");
+            char o = sc.next().charAt(0);
+            if (calculate(a,b,o)) {
+                System.out.println("결과: " + global_result);
+            }
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            String input_str = sc.next();
+            if (input_str.equals("exit")) {
+                sc.close();
+                System.exit(0);
+            }
         }
-        sc.close();
     }
 
     public static boolean calculate(int a, int b, char operand) {
