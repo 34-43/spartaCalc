@@ -3,7 +3,7 @@ package com.example.lv1;
 import java.util.Scanner;
 
 public class App {
-    static int global_result;
+    static long global_result;
 
     public static void main(String[] args) {
         calculation_process();
@@ -34,10 +34,15 @@ public class App {
                     global_result = a - b;
                     break;
                 case '*':
-                    global_result = a * b;
+                    global_result = (long) a * b;
                     break;
                 case '/':
-                    global_result = a / b;
+                    if (b != 0) {
+                        global_result = a / b;
+                    } else {
+                        System.out.println("오류:0으로 나눌 수 없음");
+                        flag = false;
+                    }
                     break;
                 default:
                     System.out.println("오류:잘못된 연산자");
