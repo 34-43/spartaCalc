@@ -33,11 +33,13 @@ public class App {
                 System.out.println("오류: 연산 결과에 문제가 있습니다.");
                 continue;
             }
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료 / rm 입력 시 가장 오래된 결과 삭제)");
             String input_str = sc.next();
             if (input_str.equals("exit")) {
                 sc.close();
                 System.exit(0);
+            } else if (input_str.equals("rm")) {
+                calc.removeResult();
             }
         }
     }
