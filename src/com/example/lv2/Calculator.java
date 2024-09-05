@@ -1,15 +1,15 @@
 package com.example.lv2;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 public class Calculator {
     private int operandLeft, operandRight;
     private char operator;
-    private final Queue<Integer> resultQueue;
+    private final List<Integer> resultList;
 
     public Calculator() {
-        resultQueue = new LinkedList<Integer>();
+        resultList = new LinkedList<>();
     }
 
     public void setLeft(int n) {
@@ -31,38 +31,40 @@ public class Calculator {
 
     public boolean calculate() {
         boolean flag = true;
-        switch (operator) {
-            case '+':
-                resultQueue.add(operandLeft+operandRight);
-                break;
-            case '-':
-                resultQueue.add(operandLeft-operandRight);
-                break;
-            case '*':
-                resultQueue.add(operandLeft*operandRight);
-                break;
-            case '/':
-                try {
-                    resultQueue.add(operandLeft/operandRight);
-                } catch (ArithmeticException e) {
+        try {
+            switch (operator) {
+                case '+':
+                    resultList.add(Math.addExact(operandLeft, operandRight));
+                    break;
+                case '-':
+                    resultList.add(Math.subtractExact(operandLeft, operandRight));
+                    break;
+                case '*':
+                    resultList.add(Math.multiplyExact(operandLeft, operandRight));
+                    break;
+                case '/':
+                    resultList.add(operandLeft/operandRight);
+                    break;
+                default:
                     flag = false;
-                }
-                break;
-            default:
-                flag = false;
-                break;
+                    break;
+            }
+        } catch (Exception e) { //ArithmeticException(Overflow, divide 0)
+            flag = false;
         }
         return flag;
     }
     public int getResult() {
         int result = 0;
-        if (!resultQueue.isEmpty()) {
-            result = resultQueue.peek();
+        if (!resultList.isEmpty()) {
+            result = resultList.get(resultList.size()-1);
         }
         return result;
     }
     public void removeResult() {
-        resultQueue.poll();
+        if (!resultList.isEmpty()) {
+        resultList.remove(0);
+        }
     }
 
 }
