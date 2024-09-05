@@ -23,9 +23,15 @@ public class App {
             }
             System.out.print("사칙연산 기호를 입력하세요: ");
             char o = sc.next().charAt(0);
-            calc.setOperator(o);
+            if (!calc.setOperator(o)) {
+                System.out.println("오류:정확한 사칙연산 기호를 입력하세요.");
+                continue;
+            }
             if (calc.calculate()) {
                 System.out.println("결과: " + calc.getResult());
+            } else {
+                System.out.println("오류: 연산 결과에 문제가 있습니다.");
+                continue;
             }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String input_str = sc.next();
