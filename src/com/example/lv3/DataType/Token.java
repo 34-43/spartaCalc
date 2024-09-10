@@ -6,8 +6,8 @@ public class Token<T> {
     public enum TokenType {
         INTEGER, FLOAT, ARITHMETIC, PARENTHESES_LEFT, PARENTHESES_RIGHT,
     }
-    private TokenType type;
-    private T value;
+    private final TokenType type;
+    private final T value;
 
     public Token(TokenType type, T value) {
         this.type = type;
