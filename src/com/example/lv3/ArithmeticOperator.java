@@ -14,8 +14,7 @@ public class ArithmeticOperator<T extends Number> {
 
     private T operandLeft, operandRight;
     private OperatorType operator;
-    private Number result;
-//    private final List<Number> resultList = new LinkedList<>();
+    //    private final List<Number> resultList = new LinkedList<>();
 
     public void setLeft(T n) {
         operandLeft = n;
@@ -28,6 +27,7 @@ public class ArithmeticOperator<T extends Number> {
     }
 
     public Number calculate() throws ArithmeticException {
+        Number result;
         if (operandLeft instanceof Integer && operandRight instanceof Integer) {
             result = switch (operator) {
                 case ADD -> operandLeft.intValue() + operandRight.intValue();
