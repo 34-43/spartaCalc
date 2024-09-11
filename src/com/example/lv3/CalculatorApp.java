@@ -7,12 +7,14 @@ import com.example.lv3.Exceptions.TokenizerException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Stream;
 
 public class CalculatorApp {
     private final Parser parser = new Parser();
     private final PostFixConverter postFixConverter = new PostFixConverter();
-    private final ArithmeticOperator<Integer> intOper = new ArithmeticOperator<>();
-    private final ArithmeticOperator<Float> floOper = new ArithmeticOperator<>();
+    private final ArithmeticOperator<Integer> intOpera = new ArithmeticOperator<>();
+    private final ArithmeticOperator<Float> floOpera = new ArithmeticOperator<>();
+    private final ArrayList<Number> resultList = new ArrayList<>();
 
     public Number evaluation(String input) throws ParserException, TokenizerException {
         ArrayList<Token<?>> tokens;
@@ -22,7 +24,9 @@ public class CalculatorApp {
         parser.setFullInput(input);
         tokens = parser.parse();
         postFixConverter.setTokenList(tokens);
+        System.out.println("Tokenized_Serial:"+tokens);
         posts = postFixConverter.convert();
+        System.out.println("PostFixed_Serial:"+posts);
 
         for (Token<?> token : posts) {
             switch (token.getType()) {
@@ -30,32 +34,46 @@ public class CalculatorApp {
                     evalStack.add((Number)token.getValue());
                     break;
                 case ARITHMETIC:
-                    Number left = evalStack.pop();
                     Number right = evalStack.pop();
+                    Number left = evalStack.pop();
                     if (left instanceof Integer && right instanceof Integer) {
-                        intOper.setRight(right.intValue());
-                        intOper.setLeft(left.intValue());
-                        intOper.setOperator((ArithmeticOperator.OperatorType) token.getValue());
-                        evalStack.add(intOper.calculate());
+                        intOpera.setRight(right.intValue());
+                        intOpera.setLeft(left.intValue());
+                        intOpera.setOperator((ArithmeticOperator.OperatorType) token.getValue());
+                        evalStack.add(intOpera.calculate());
                     } else {
-                        floOper.setRight(right.floatValue());
-                        floOper.setLeft(left.floatValue());
-                        floOper.setOperator((ArithmeticOperator.OperatorType) token.getValue());
-                        evalStack.add(floOper.calculate());
+                        floOpera.setRight(right.floatValue());
+                        floOpera.setLeft(left.floatValue());
+                        floOpera.setOperator((ArithmeticOperator.OperatorType) token.getValue());
+                        evalStack.add(floOpera.calculate());
                     }
             }
         }
-        return evalStack.pop();
+        Number result = evalStack.pop();
+        resultList.add(result);
+        return result;
+    }
+
+    public Stream<Number> getResultStream() {
+        return resultList.stream();
+    }
+
+    public void removeResult() {
+        if (!resultList.isEmpty()) {
+            resultList.remove(0);
+        }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         CalculatorApp calculator = new CalculatorApp();
-        try {
-            System.out.print("테스트 수식 입력: ");
-            System.out.println(calculator.evaluation(sc.nextLine()));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        while (true) {
+            try {
+                System.out.print("테스트 수식 입력: ");
+                System.out.println(calculator.evaluation(sc.nextLine()));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
