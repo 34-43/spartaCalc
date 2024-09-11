@@ -22,6 +22,10 @@ public class Token<T> {
         return value;
     }
 
+    public Token<ArithmeticOperator.OperatorType> toOperatorToken() {
+        return new Token<>(TokenType.ARITHMETIC,(ArithmeticOperator.OperatorType) this.value);
+    }
+
     public static int getPriority(Token<ArithmeticOperator.OperatorType> mightBigger, Token<ArithmeticOperator.OperatorType> mightSmaller) {
         return mightBigger.getValue().compareTo(mightSmaller.getValue());
     }
