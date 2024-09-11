@@ -22,9 +22,11 @@ java 숙달을 위해 3단계로 나뉘어진 계산기 앱 구현 과제입니�
 - **실행 방법**: `Main` 클래스를 실행하여 Lv3 애플리케이션을 실행합니다. Swing GUI로 실행됩니다.
 
 ## 클래스 다이어그램
-- Lv1, Lv2
-  [classDiagram]()
-- Lv3
+### Lv1, Lv2
+---
+  ![image](https://github.com/user-attachments/assets/82652580-65fd-46c4-b96b-e3f4e2dfc269)
+### Lv3
+---
   ```mermaid
   classDiagram
   		class Tokenizer {
