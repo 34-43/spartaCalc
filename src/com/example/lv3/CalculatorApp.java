@@ -9,6 +9,13 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.stream.Stream;
 
+/*
+계산기의 기능을 외부에서 활용하기 위해 각 모듈을 종속하는 중간 조작 클래스.
+구현된 Parser, PostFixConverter, ArithmeticOperator 등을 객체화하여 사용합니다.
+evaluation 메서드는 리스트로 만든 후위 연산 식과 사칙연산 단위연산기를 통해 실제 값을 계산하고 반환합니다.
+결과를 저장하는 콜렉션에서 가장 오래된 값을 지우거나 Stream 형태로 반환하는 public 메서드 등을 가집니다.
+ */
+
 public class CalculatorApp {
     private final Parser parser = new Parser();
     private final PostFixConverter postFixConverter = new PostFixConverter();

@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.stream.Stream;
 
+/*
+GUI 구현부 클래스에, CalculatorApp 객체를 연결하여 각 기능을 사용할 수 있도록 작성하였습니다.
+CalculatorApp 의 getResultStream 메서드를 통해 반환받은 숫자의 Stream 을, GUI 조작에 따라 변형할 수 있습니다.
+Stream 의 변형 과정에는 축약된 lambda 표현이 사용됩니다.
+ */
+
 public class Main {
     private JTabbedPane tabPane;
     private JPanel mainPanel;

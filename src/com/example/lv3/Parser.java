@@ -8,6 +8,14 @@ import com.example.lv3.Exceptions.TokenizerException;
 
 import java.util.ArrayList;
 
+/*
+입력된 수식을 숫자와 기호로 구분하여 순서대로 토큰화합니다.
+조건에 따라 가변 길이의 buffer 를 이용해 숫자와 기호를 앞에서부터 분리합니다.
+Tokenizer 유틸 클래스의 parseToken 메서드를 사용해, 분리한 문자열을 토큰화합니다.
+토큰들을 리스트에 저장하여 반환합니다.
+입력된 수식을 순차적으로 처리하기 위한 내부 멤버 메서드를 2개 가집니다.
+ */
+
 public class Parser {
     private StringBuffer inputBuffer;
     private char ptr;

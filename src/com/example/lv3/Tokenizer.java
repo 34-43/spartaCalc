@@ -5,8 +5,10 @@ import com.example.lv3.Exceptions.TokenizerException;
 import com.example.lv3.DataType.Token.TokenType;
 import com.example.lv3.ArithmeticOperator.OperatorType;
 
-// 정규표현과 제어문을 통해 입력된 문자열 토큰을 적절한 토큰 객체로 반환해 주는 유틸 클래스.
-// 입력되는 문자열 토큰은 정확해야 하며, 잘못되었을 경우 사용자 지정 예외를 던집니다.
+/*
+ 정규표현과 제어문을 통해 입력된 문자열 토큰을 적절한 토큰 객체로 반환해 주는 유틸 클래스.
+ 입력되는 문자열 토큰은 정확해야 하며, 잘못되었을 경우 사용자 지정 예외를 던집니다.
+ */
 
 public class Tokenizer {
     private static final String INTEGER_REG ="^[0-9]*$";

@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/*
+토큰 형태로 저장된 중위 연산식의 리스트를 Stack 과 알고리즘을 통해 괄호가 제거된 후위 연산식 리스트로 처리합니다.
+연산자의 우선 순위에 따라 스택에 바로 넣을 지, 스택 top 원소를 내보낸 후에 넣을 지 결정하게 됩니다.
+비교는 Token 자료형 클래스에 구현된 정적 메서드 getPriority 를 통해 간편하게 비교하며, 해당 메서드는 열거형 index 를 활용하여 비교합니다.
+ */
+
 public class PostFixConverter {
     private List<Token<?>> inputList = new ArrayList<>();
     private final Stack<Token<?>> tempStack = new Stack<>();

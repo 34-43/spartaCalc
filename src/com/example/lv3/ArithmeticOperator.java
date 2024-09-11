@@ -1,9 +1,11 @@
 package com.example.lv3;
 
-// Number 로 제한된 제네릭 사칙연산 계산 클래스.
-// 제네릭 타입 피연산자 2항과 열거형 연산자 1개를 private 필드로 가집니다.
-// setter 로 필드를 지정합니다.
-// calculator 메서드는 잘못된 나눗셈 등에 대한 예외를 던질 수 있습니다.
+/*
+ Number 로 제한된 제네릭 사칙연산 계산 클래스.
+ 제네릭 타입 피연산자 2항과 열거형 연산자 1개를 private 필드로 가집니다.
+ setter 로 필드를 지정합니다.
+ calculate 메서드는 제네릭 타입에 따라 다른 값으로 연산을 하며, 잘못된 나눗셈 등에 대한 예외를 던질 수 있습니다.
+ */
 
 public class ArithmeticOperator<T extends Number> {
     public enum OperatorType {
@@ -30,7 +32,7 @@ public class ArithmeticOperator<T extends Number> {
                 case ADD -> operandLeft.intValue() + operandRight.intValue();
                 case SUBTRACT -> operandLeft.intValue() - operandRight.intValue();
                 case MULTIPLY -> operandLeft.intValue() * operandRight.intValue();
-                case DIVIDE -> operandLeft.intValue() / operandRight.intValue();
+                case DIVIDE -> operandLeft.floatValue() / operandRight.floatValue();
             };
         } else {
             result = switch (operator) {
