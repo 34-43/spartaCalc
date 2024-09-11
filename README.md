@@ -1,6 +1,9 @@
 # SpartaCalc
-
-java 숙달을 위해 3단계로 나뉘어진 계산기 앱 구현 과제입니다.
+---
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/3c68c33d-07bb-475b-90db-66849b5cbbb9">
+  <p>java 숙달을 위해 3단계로 나뉘어진 계산기 앱 구현 과제입니다.</p>
+</div>
 
 ## 사용된 기술
 - **Java**: 핵심 로직 및 연산 처리
