@@ -7,7 +7,6 @@ import com.example.lv3.Exceptions.ParserException;
 import com.example.lv3.Exceptions.TokenizerException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Parser {
     private StringBuffer inputBuffer;
