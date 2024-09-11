@@ -1,12 +1,10 @@
 package com.example.lv3;
 
-import com.example.lv3.DataType.Token;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.stream.Stream;
 
-public class CalculatorGuiApp {
+public class Main {
     private JTabbedPane tabPane;
     private JPanel mainPanel;
     private JPanel calcTab;
@@ -39,10 +37,11 @@ public class CalculatorGuiApp {
     private JButton btnEnter;
     private JButton btnBack;
     private JButton btnRead;
+    private JButton btnDel;
 
     private final CalculatorApp calcApp = new CalculatorApp();
 
-    public CalculatorGuiApp() {
+    public Main() {
         readPanel.setLayout(new GridLayout(0,1));
         scrollReadPane.setViewportView(readPanel);
         ButtonGroup group = new ButtonGroup();
@@ -100,11 +99,21 @@ public class CalculatorGuiApp {
             readPanel.revalidate();
             readPanel.repaint();
         });
+
+        btnDel.addActionListener(ev -> {
+            calcApp.removeResult();
+            readPanel.removeAll();
+            calcApp.getResultStream().forEach((num)->{
+                readPanel.add(new JLabel(num.toString()));
+            });
+            readPanel.revalidate();
+            readPanel.repaint();
+        });
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("스파르타 계산기");
-        frame.setContentPane(new CalculatorGuiApp().mainPanel);
+        frame.setContentPane(new Main().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
