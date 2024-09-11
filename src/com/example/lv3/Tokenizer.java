@@ -15,24 +15,26 @@ public class Tokenizer {
     
     public static Token<?> parseToken(String input) throws TokenizerException {
         if (input.matches(INTEGER_REG)) {
-            return new Token<>(TokenType.INTEGER,Integer.parseInt(input));
+            try { return new Token<>(TokenType.INTEGER,Integer.parseInt(input));
+            } catch (NumberFormatException e) {throw new TokenizerException(input,"정수 자릿수 초과");}
         } else if (input.matches(FLOAT_REG)) {
-            return new Token<>(TokenType.FLOAT,Float.parseFloat(input));
+            try { return new Token<>(TokenType.FLOAT,Float.parseFloat(input));
+            } catch (NumberFormatException e) {throw new TokenizerException(input,"실수 자릿수 초과");}
         } else if (input.matches(OPERATION_REG)) {
             OperatorType ot = switch (input) {
                 case "+" -> OperatorType.ADD;
                 case "-" -> OperatorType.SUBTRACT;
                 case "*" -> OperatorType.MULTIPLY;
                 case "/" -> OperatorType.DIVIDE;
-                default -> throw new TokenizerException("연산자:" + input);
+                default -> throw new TokenizerException(input, "연산자 종류 부적합");
             };
-            return new Token<OperatorType>(TokenType.ARITHMETIC,ot);
+            return new Token<>(TokenType.ARITHMETIC,ot);
         } else if (input.equals("(")) {
-            return new Token<TokenType>(TokenType.PARENTHESES_LEFT,TokenType.PARENTHESES_LEFT);
+            return new Token<>(TokenType.PARENTHESES_LEFT,TokenType.PARENTHESES_LEFT);
         } else if (input.equals(")")) {
-            return new Token<TokenType>(TokenType.PARENTHESES_RIGHT,TokenType.PARENTHESES_RIGHT);
+            return new Token<>(TokenType.PARENTHESES_RIGHT,TokenType.PARENTHESES_RIGHT);
         } else {
-            throw new TokenizerException(input);
+            throw new TokenizerException(input, "토큰화 불가능한 값");
         }
     }
 
