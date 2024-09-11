@@ -20,6 +20,7 @@ public class Parser {
 
     public ArrayList<Token<?>> parse() throws ParserException, TokenizerException {
         StringBuilder tempBuffer = new StringBuilder();
+        tokenizedList.clear();
         if (inputBuffer.isEmpty()) {
             throw new ParserException("입력된 수식이 없음");
         }
