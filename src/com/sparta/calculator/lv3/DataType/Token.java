@@ -1,6 +1,6 @@
-package com.example.lv3.DataType;
+package com.sparta.calculator.lv3.DataType;
 
-import com.example.lv3.ArithmeticOperator;
+import com.sparta.calculator.lv3.ArithmeticOperator;
 
 /*
 토큰은 객체로서 두 필드를 갖는 자료형입니다.

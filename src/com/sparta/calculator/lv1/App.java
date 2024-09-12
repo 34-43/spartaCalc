@@ -1,4 +1,4 @@
-package com.example.lv1;
+package com.sparta.calculator.lv1;
 
 import java.util.Scanner;
 

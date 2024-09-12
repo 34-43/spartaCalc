@@ -1,4 +1,4 @@
-package com.example.lv3.Exceptions;
+package com.sparta.calculator.lv3.Exceptions;
 
 public class TokenizerException extends Exception {
     public TokenizerException(String erroredType, String cause) {

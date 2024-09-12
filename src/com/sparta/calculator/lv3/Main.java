@@ -1,4 +1,4 @@
-package com.example.lv3;
+package com.sparta.calculator.lv3;
 
 import javax.swing.*;
 import java.awt.*;

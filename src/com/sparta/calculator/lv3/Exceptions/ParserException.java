@@ -1,4 +1,4 @@
-package com.example.lv3.Exceptions;
+package com.sparta.calculator.lv3.Exceptions;
 
 public class ParserException extends Exception {
     public ParserException(String cause) {

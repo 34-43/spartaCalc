@@ -1,8 +1,8 @@
-package com.example.lv3;
+package com.sparta.calculator.lv3;
 
-import com.example.lv3.DataType.Token;
-import com.example.lv3.Exceptions.ParserException;
-import com.example.lv3.Exceptions.TokenizerException;
+import com.sparta.calculator.lv3.DataType.Token;
+import com.sparta.calculator.lv3.Exceptions.ParserException;
+import com.sparta.calculator.lv3.Exceptions.TokenizerException;
 
 import java.util.ArrayList;
 import java.util.Scanner;

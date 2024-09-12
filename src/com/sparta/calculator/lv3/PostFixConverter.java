@@ -1,7 +1,7 @@
-package com.example.lv3;
+package com.sparta.calculator.lv3;
 
-import com.example.lv3.DataType.Token;
-import com.example.lv3.Exceptions.SyntaxException;
+import com.sparta.calculator.lv3.DataType.Token;
+import com.sparta.calculator.lv3.Exceptions.SyntaxException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.lv2;
+package com.sparta.calculator.lv2;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

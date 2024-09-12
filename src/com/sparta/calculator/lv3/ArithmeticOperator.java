@@ -1,4 +1,4 @@
-package com.example.lv3;
+package com.sparta.calculator.lv3;
 
 /*
  Number 로 제한된 제네릭 사칙연산 계산 클래스.
