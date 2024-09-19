@@ -5,13 +5,17 @@ import com.sparta.baseball.Exceptions.GuessException;
 
 import java.util.Scanner;
 
+/*
+LV.1 과제를 구현한 가장 기본적인 숫자야구게임 메인 클래스입니다.
+ */
+
 public class BasicGame {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Baseball b = new Baseball();
         GuessResult gr = new GuessResult();
         b.newGame();
-        printBatter();
+        Baseball.printBatter();
         while(!gr.isCleared()) {
             System.out.print("추측:");
             try {gr = b.guess(sc.next());}
@@ -24,36 +28,5 @@ public class BasicGame {
                 System.out.println("성공! (정답:" + b.getAnswer() + ")");
             }
         }
-    }
-    
-    public static void printBatter() {
-        String sb = """
-                                _
-                              .//'    \s
-                            ./@'    \s
-                           //'    \s
-                          //  ___    \s
-                          /' /_  2)    \s
-                    .- .-,= _ _c ___>    \s
-                   \\_(_-< ` ( \\ _/           _      _    \s
-                      \\__)   `-,' \\         (_'  -    __  -    \s
-                        \\ '-._/   /    \s
-                         \\_   '-./    \s
-                        \\ '---" |    \s
-                        ['.____,l    \s
-                       /`------"\\    \s
-                       , `` 'x_``_'
-                      /  -- _^_    \\    \s
-                     ,    .'   '.   '    \s
-                    /   _/       \\_  \\    \s
-                   ,   -'          .__,    \s
-                  ,'---'            \\  \\    \s
-                 /  ,'               '._\\    \s
-                ,_./                  l`s\\    \s
-                |`s/                 , _>__)
-                
-                ~ play ball ~
-                """;
-        System.out.println(sb);
     }
 }
