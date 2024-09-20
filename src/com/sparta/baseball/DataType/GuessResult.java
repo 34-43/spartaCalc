@@ -6,9 +6,8 @@ GuessResult 객체는 숫자 야구 게임에서 각 추측 시도에 대한 Str
  */
 
 public class GuessResult {
-    // 추측 시도의 결과를 저장할 두 필드입니다.
-    private final int strike;
-    private final int ball;
+    private final int strike;   // 추측 시도의 strike 결과값.
+    private final int ball; //추측 시도의 ball 결과값.
 
     // 콘솔에 출력될 문자열에 색상을 입히기 위해 작성된 colorStr 메서드에서 사용하는 열거형 및 상수입니다.
     private enum COLOR {BLACK,WHITE,YELLOW,GREEN,RED}
