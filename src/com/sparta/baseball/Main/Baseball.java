@@ -1,4 +1,4 @@
-package com.sparta.baseball;
+package com.sparta.baseball.Main;
 
 import com.sparta.baseball.DataType.GuessResult;
 import com.sparta.baseball.Exceptions.GuessException;

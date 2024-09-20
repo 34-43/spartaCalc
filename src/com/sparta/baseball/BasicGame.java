@@ -2,6 +2,7 @@ package com.sparta.baseball;
 
 import com.sparta.baseball.DataType.GuessResult;
 import com.sparta.baseball.Exceptions.GuessException;
+import com.sparta.baseball.Main.Baseball;
 
 import java.util.Scanner;
 
