@@ -8,8 +8,7 @@ import com.sparta.baseball.Exceptions.GuessException;
  */
 
 public class InputTester {
-    // 입력된 문자열이 세 가지 주요 조건을 만족하는지 검사합니다.
-    // 불만족할 경우, 그 사유를 들어 예외를 발생시킵니다.
+    // 입력된 문자열이 세 가지 주요 조건을 만족하는지 검사하고 필요 시 예외만을 발생시킵니다.
     public static void testGuess(String input) throws GuessException {
         if (input.length() != 3) {
             throw new GuessException("문제 길이와 다른 입력");
