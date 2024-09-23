@@ -5,9 +5,12 @@ GuessResult 객체는 숫자 야구 게임에서 각 추측 시도에 대한 Str
 생성자를 통해 계산된 두 값이 전달되며, 멤버 메서드로 두 값을 활용한 유용한 기능을 지원합니다.
  */
 
+import com.sparta.baseball.Main.Baseball;
+
 public class GuessResult {
     private final int strike;   // 추측 시도의 strike 결과값.
-    private final int ball; //추측 시도의 ball 결과값.
+    private final int ball; // 추측 시도의 ball 결과값.
+    private final int difficulty; // 현재 게임의 난이도.
 
     // 콘솔에 출력될 문자열에 색상을 입히기 위해 작성된 colorStr 메서드에서 사용하는 열거형 및 상수입니다.
     private enum COLOR {BLACK,WHITE,YELLOW,GREEN,RED}
@@ -27,11 +30,19 @@ public class GuessResult {
     public GuessResult(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
+        this.difficulty = Baseball.getDifficulty();
+    }
+
+    // 테스팅을 위한 생성자.
+    public GuessResult(int strike, int ball, int difficulty) {
+        this.strike = strike;
+        this.ball = ball;
+        this.difficulty = difficulty;
     }
 
     // 추측 시도가 성공적이었는지, strike 값을 확인하여 반환합니다.
     public boolean isCleared() {
-        return strike == 3;
+        return strike == difficulty;
     }
 
     // 추측 시도가 Out 인지, 두 필드를 확인하여 반환합니다.
@@ -59,23 +70,30 @@ public class GuessResult {
         if (isCleared()) {return colorStr("GAME SET!", COLOR.RED);}
         else if (isOut()) {return colorStr("OUT!", COLOR.RED);}
         StringBuilder sb = new StringBuilder();
-        sb.append(colorStr("⌌————————————————————⌍\n∣", COLOR.WHITE));
+        sb.append(colorStr("⌌———————————", COLOR.WHITE));
+        sb.append(colorStr("———", COLOR.WHITE).repeat(Math.max(0, difficulty)));
+        sb.append(colorStr("⌍\n∣", COLOR.WHITE));
         sb.append(colorStr("\tSTRIKE\t",COLOR.WHITE));
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < difficulty; i++) {
             sb.append(colorStr("⬤ ",strike > i ? COLOR.YELLOW : COLOR.BLACK));
         }
         sb.append(colorStr(" ∣\n∣", COLOR.WHITE));
         sb.append(colorStr("\tBALL  \t",COLOR.WHITE));
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < difficulty; i++) {
             sb.append(colorStr("⬤ ",ball > i ? COLOR.GREEN : COLOR.BLACK));
         }
-        sb.append(colorStr(" ∣\n⌎————————————————————⌏", COLOR.WHITE));
+        sb.append(colorStr(" ∣\n⌎———————————", COLOR.WHITE));
+        sb.append(colorStr("———", COLOR.WHITE).repeat(Math.max(0, difficulty)));
+        sb.append(colorStr("⌏", COLOR.WHITE));
         return sb.toString();
     }
 
+    // 부분 테스팅 드라이버
     public static void main(String[] args) {
         System.out.println(new GuessResult(3,0));
         System.out.println(new GuessResult(0,0));
-        System.out.println(new GuessResult(1,2));
+        System.out.println(new GuessResult(2,1,3));
+        System.out.println(new GuessResult(2,2,4));
+        System.out.println(new GuessResult(2,3,5));
     }
 }

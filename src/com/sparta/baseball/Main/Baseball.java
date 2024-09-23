@@ -1,6 +1,7 @@
 package com.sparta.baseball.Main;
 
 import com.sparta.baseball.DataType.GuessResult;
+import com.sparta.baseball.Exceptions.DifficultySetException;
 import com.sparta.baseball.Exceptions.GuessException;
 
 import java.util.*;
@@ -14,11 +15,12 @@ public class Baseball {
     private int[] answerArr;    // 정답 수열을 저장하는 정수 배열.
     private final Set<Integer> answerSet;   // 정답 수열의 생성 및 추측 계산에 필요한 Integer Set 콜렉션.
     private int guessCount; // 추측 시도 횟수를 가산하는 정수 변수.
+    private static int difficulty = 3;  // 프로그램이 종료되기 전까지 게임의 난이도 설정을 보존하는 정적 정수 변수.
     private static final ArrayList<Integer> statList = new ArrayList<>();   // 프로그램이 종료되기 전까지 통계를 저장할 정적 리스트 입니다.
 
     // 필드를 초기화하는 유일한 기본 생성자입니다.
     public Baseball() {
-        this.answerArr = new int[3];
+        this.answerArr = new int[difficulty];
         answerSet = new HashSet<>();
         guessCount = 0;
     }
@@ -28,7 +30,7 @@ public class Baseball {
     // 변환 결과가 오름차순이 되는 것을 막기 위해 결과를 한 번 뒤섞습니다. 시도 횟수 또한 초기화합니다.
     public void newGame() {
         answerSet.clear();
-        while(answerSet.size() < 3) {
+        while(answerSet.size() < difficulty) {
             int a = (int)(Math.random() * 10);
             if (a != 0) {answerSet.add(a);}
         }
@@ -38,7 +40,7 @@ public class Baseball {
         guessCount = 0;
     }
 
-    // 정답 배열을 연이은 3자리 숫자 형태의 문자열로 변환하여 반환합니다.
+    // 정답 배열을 연이은 숫자 형태의 문자열로 변환하여 반환합니다.
     public String getAnswer() {
         return Integer.toString(Arrays.stream(answerArr).reduce((a,b)->10*a+b).orElse(0));
     }
@@ -59,7 +61,7 @@ public class Baseball {
         int strike = 0;
         int ball = 0;
         InputTester.testGuess(input);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < difficulty; i++) {
             if (answerArr[i] == input.charAt(i) - '0') {strike++;}
             if (answerSet.contains(input.charAt(i) - '0')) {ball++;}
         }
@@ -73,6 +75,17 @@ public class Baseball {
             statList.add(guessCount);
             guessCount = 0;
         }
+    }
+
+    // 게임의 난이도를 설정합니다. 프로그램이 종료되기 전까지 유지되며, 잘못된 입력에 대해 예외를 발생시킵니다.
+    public static void setDifficulty(String input) throws DifficultySetException {
+        InputTester.testDifficulty(input);
+        Baseball.difficulty = Integer.parseInt(input);
+    }
+
+    // 현재 설정되어 있는 난이도를 정수로 반환합니다.
+    public static int getDifficulty() {
+        return Baseball.difficulty;
     }
 
     // 통계를 int Array 형태로 반환하는 getter 입니다.
@@ -110,6 +123,7 @@ public class Baseball {
         System.out.println(batter);
     }
 
+    // 부분 테스팅 드라이버
     public static void main(String[] args) {
         Baseball b = new Baseball();
         GuessResult gr;
