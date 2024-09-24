@@ -1,11 +1,10 @@
 # baseball
-
----
-java 객체지향 숙달을 위해 구현된 숫자 야구 게임 과제입니다.
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/b930ae31-a989-4dd8-8608-0f1c5097901d">
+	<p>java 객체지향 숙달을 위해 구현된 숫자 야구 게임 과제입니다.</p>
+</div>
 
 ## 동작 방식
-
----
 콘솔 창에서 숫자 야구 게임을 실행시키기 위한 두 프로세스가 있습니다.
 - __BasicGame__: 기본 난이도 게임을 1회 수행합니다.
 - __ImprovedGame__: 아래의 기능을 지원합니다.
@@ -21,8 +20,6 @@ java 객체지향 숙달을 위해 구현된 숫자 야구 게임 과제입니�
 - 추측이 성공적일 경우, 기록을 통계에 저장하고 종료됩니다.
 
 ## 프로젝트 구조
-
----
 ```text
 \src\com\sparta\baseball
 │   BasicGame.java
@@ -43,8 +40,6 @@ java 객체지향 숙달을 위해 구현된 숫자 야구 게임 과제입니�
 `pwsh tree /f로 작성`
 
 ## 클래스 다이어그램
-
----
 ```mermaid
 classDiagram
     class BasicGame {
@@ -106,7 +101,5 @@ classDiagram
 ```
 
 ## 문서
-
----
 [설계 & 트러블 슈팅](https://mdworld.notion.site/3-39bac062aa284ca59bb23031f9810b6c?pvs=4)
 
