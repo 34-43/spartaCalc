@@ -1,4 +1,4 @@
-# SpartaCalc
+# calculator
 ---
 <div align="center">
   <img src="https://github.com/user-attachments/assets/e164e6e5-e903-4fed-8936-d4c6f6c91867">
@@ -81,6 +81,3 @@
   		CalculatorApp --> ArithmeticOperator
   		Parser --> Tokenizer
   ```
-
-## 기여자
-- **개발자**: [34-43](https://github.com/34-43)
